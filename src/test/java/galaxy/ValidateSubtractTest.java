@@ -14,7 +14,7 @@ public class ValidateSubtractTest {
 
     @Before
     public void setUp(){
-        Main.romans = Main.readXml();
+        //Trade.romans = Trade.readXml();
         lists = new ArrayList<>(
                 Arrays.asList("IIIVI")
         );

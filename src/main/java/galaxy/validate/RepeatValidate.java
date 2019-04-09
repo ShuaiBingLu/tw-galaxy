@@ -1,6 +1,6 @@
 package galaxy.validate;
 
-import galaxy.Main;
+import galaxy.Trade;
 import galaxy.entity.RomanNumeral;
 import galaxy.util.RomanConvert;
 
@@ -16,31 +16,32 @@ import java.util.List;
  */
 public class RepeatValidate extends ValidateChain {
 
-    public boolean validate(String romanStr){
-        if(romanStr==null || romanStr.equals(""))
-            return  false;
+    public boolean validate(String romanStr) {
+        if (romanStr == null || romanStr.equals(""))
+            return false;
         String[] strArray = romanStr.split("");
         //check repeat symbol
-        List<RomanNumeral> romanNumeralList = Main.romans.getRoman();
-        if(checckNoRepeat(romanNumeralList,strArray)){
-            if(strArray.length>3){
-                return checkRepeatable4Times(strArray)&&checkRepeatableRule(strArray);
+        List<RomanNumeral> romanNumeralList = Trade.romans.getRoman();
+        if (checkNoRepeat(romanNumeralList, strArray)) {
+            if (strArray.length > 3) {
+                return checkRepeatable4Times(strArray) && checkRepeatableRule(strArray);
             }
             return true;
         }
-            return  false;
+        return false;
     }
+
     /*
      * 检查是否存在不可重复的 比如 "D", "L", and "V" can never be repeated.
      * @param List<RomanNumeral> 字符的对应列表
      * @param strArray 需要判断的字符数组
      * @return 是否重复
      */
-    private boolean checckNoRepeat(List<RomanNumeral> romanNumeralList,String[] strArray){
-        HashMap<String,Integer> norepeatMap = new HashMap<>();
-        for(RomanNumeral item : romanNumeralList){
-            if(!item.isRepeat()){
-                norepeatMap.put(item.getSymbol(),0);
+    private boolean checkNoRepeat(List<RomanNumeral> romanNumeralList, String[] strArray) {
+        HashMap<String, Integer> norepeatMap = new HashMap<>();
+        for (RomanNumeral item : romanNumeralList) {
+            if (!item.isRepeat()) {
+                norepeatMap.put(item.getSymbol(), 0);
             }
         }
         for (String s : strArray) {
@@ -50,8 +51,9 @@ public class RepeatValidate extends ValidateChain {
             }
         }
         Collection<Integer> values = norepeatMap.values();
-        return !values.stream().anyMatch(x->x>1);
+        return !values.stream().anyMatch(x -> x > 1);
     }
+
     /*
      *
      *判断是否超过4次
@@ -75,6 +77,7 @@ public class RepeatValidate extends ValidateChain {
         }
         return true;
     }
+
     /*
      * They may appear four times if the third and fourth are separated by a smaller value, such as XXXIX.
      *
@@ -95,10 +98,10 @@ public class RepeatValidate extends ValidateChain {
                 if (tail == head + 3 && flag.equals(cursor)) {
                     return false;
                 }
-                if (tail == head + 4 && flag.equals(cursor) ) {
-                    String temp = arr[tail-1];
+                if (tail == head + 4 && flag.equals(cursor)) {
+                    String temp = arr[tail - 1];
                     int tempValue = RomanConvert.getRomanNumeral(temp).getValue();
-                    if(tempValue<value)
+                    if (tempValue < value)
                         return true;
                     return false;
                 }

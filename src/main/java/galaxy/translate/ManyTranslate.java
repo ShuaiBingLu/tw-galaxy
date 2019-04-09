@@ -1,5 +1,6 @@
 package galaxy.translate;
 
+import galaxy.entity.Credit;
 import galaxy.entity.Declare;
 import galaxy.entity.Output;
 import galaxy.util.RomanConvert;
@@ -20,14 +21,14 @@ public class ManyTranslate implements ITranslate {
 
     private Output output;
 
-    private HashMap<String, Float> credits;
+    private Credit credit;
 
     private Declare declare;
 
 
-    public ManyTranslate(Output output, HashMap<String, Float> credits,Declare declare){
+    public ManyTranslate(Output output, Credit credit,Declare declare){
         this.output = output;
-        this.credits = credits;
+        this.credit = credit;
         this.declare = declare;
     }
     @Override
@@ -52,7 +53,8 @@ public class ManyTranslate implements ITranslate {
             output.addError();
             return;
         }
-        float res = credits.get(goods);
+
+        float res = credit.getCreditValue(goods);
         String resStr = symbol + " " +goods + " is " + new Float(res * value).longValue() + " Credits";
         output.addOutput(resStr);
     }

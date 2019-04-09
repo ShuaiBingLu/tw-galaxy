@@ -1,6 +1,6 @@
 package galaxy.validate;
 
-import galaxy.Main;
+import galaxy.Trade;
 import galaxy.entity.RomanNumerals;
 import galaxy.util.RomanConvert;
 
@@ -15,7 +15,7 @@ import java.util.*;
 public class SubtractLimitValidate extends ValidateChain {
 
     public boolean validate(String romanStr) {
-        RomanNumerals romans = Main.romans;
+        RomanNumerals romans = Trade.romans;
         HashMap<String, String> map = new HashMap<>();
         boolean isSuccess = true;
         for (int i = 0; i < romanStr.length() - 1; i++) {

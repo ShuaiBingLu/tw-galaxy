@@ -1,5 +1,6 @@
 package galaxy.translate;
 
+import galaxy.entity.Credit;
 import galaxy.entity.Declare;
 import galaxy.entity.Output;
 import galaxy.util.RomanConvert;
@@ -14,15 +15,16 @@ import java.util.regex.Pattern;
  * @Date: Created in 2019/3/26
  * @Modified By:
  */
+@SuppressWarnings("ALL")
 public class CreditTranslate implements ITranslate {
 
     private static final Pattern creditsPattern = Pattern.compile("^(.*) (\\w+\\b) is (\\d+) Credits$");
 
-    private HashMap<String, Float> creditsMap;
+    private Credit credit;
     private Declare declare;
     private Output output;
-    public CreditTranslate(HashMap<String, Float> map,Declare declare,Output output){
-        creditsMap = map;
+    public CreditTranslate(Credit credit, Declare declare, Output output){
+        this.credit = credit;
         this.declare = declare;
         this.output = output;
     }
@@ -51,7 +53,7 @@ public class CreditTranslate implements ITranslate {
             return;
         }
         float res = Long.parseLong(credits)/(float)nums;
-        creditsMap.put(goods,res);
+        credit.addCredit(goods,res);
     }
 
 }

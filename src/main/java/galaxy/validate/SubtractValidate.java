@@ -1,6 +1,6 @@
 package galaxy.validate;
 
-import galaxy.Main;
+import galaxy.Trade;
 import galaxy.entity.RomanNumeral;
 
 import java.util.ArrayList;
@@ -17,9 +17,10 @@ import java.util.List;
 
 public class SubtractValidate  extends ValidateChain  {
 
+    @Override
     public boolean validate(String romanStr){
 
-        List<RomanNumeral> romanNumeralList = Main.romans.getRoman();
+        List<RomanNumeral> romanNumeralList = Trade.romans.getRoman();
         List<String> compose = new ArrayList<>();
 
         for(int index = 0;index<romanNumeralList.size();index++){

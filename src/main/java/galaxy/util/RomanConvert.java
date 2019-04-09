@@ -1,6 +1,6 @@
 package galaxy.util;
 
-import galaxy.Main;
+import galaxy.Trade;
 import galaxy.entity.RomanNumeral;
 import galaxy.entity.RomanNumerals;
 import galaxy.validate.RepeatValidate;
@@ -26,7 +26,7 @@ public class RomanConvert {
      * @return the RomanNumeral实体类
      */
     public static RomanNumeral getRomanNumeral(String str) {
-        List<RomanNumeral> romanNumeralList = Main.romans.getRoman();
+        List<RomanNumeral> romanNumeralList = Trade.romans.getRoman();
 
         Collection<RomanNumeral> res = romanNumeralList.stream().filter(romanNumeral ->
                 romanNumeral.getSymbol().equals(str)).collect(Collectors.toList());
@@ -42,7 +42,7 @@ public class RomanConvert {
      */
     public static Integer calculateRomal(String str) {
 
-        RomanNumerals romanNumerals = Main.romans;
+        RomanNumerals romanNumerals = Trade.romans;
         RepeatValidate repeatValidate = new RepeatValidate();
         SubtractLimitValidate subtractLimitValidate = new SubtractLimitValidate();
         SubtractValidate subtractValidate = new SubtractValidate();

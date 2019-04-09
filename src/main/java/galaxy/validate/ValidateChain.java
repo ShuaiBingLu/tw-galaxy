@@ -12,7 +12,16 @@ public abstract class ValidateChain {
     protected abstract boolean validate(String str);
 
     private ValidateChain next;
-
+    /*
+     *
+     * @Description: 
+     * 
+     * @auther: bingshuai.lu
+     * @date: 15:14 2019/4/8 
+     * @param: [validate]
+     * @return: galaxy.validate.ValidateChain
+     *
+     */
     public ValidateChain setNext(ValidateChain validate){
         this.next = validate;
         return this.next;

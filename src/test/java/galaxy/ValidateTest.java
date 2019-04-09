@@ -23,7 +23,7 @@ public class ValidateTest {
     static List<String> noRepeatList = new ArrayList<>();
     @Before
     public void setUp(){
-        Main.romans = Main.readXml();
+       // Trade.romans = Trade.readXml();
         lists = new ArrayList<>(
                 Arrays.asList("IIIVI")
         );

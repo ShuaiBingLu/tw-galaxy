@@ -22,7 +22,4 @@ public class RomanNumerals {
         return roman;
     }
 
-    public void setRoman(List<RomanNumeral> roman) {
-        this.roman = roman;
-    }
 }
